@@ -1,8 +1,15 @@
-import './App.css';
+import PlanetList from './components/PlanetList';
+import { PlanetProvider } from './context/PlanetContext';
+import './public/assets/style/App.css';
 
 function App() {
   return (
-    <h1>Hello</h1>
+      <div>
+        <h1>Planets</h1>
+        <PlanetProvider>
+          <PlanetList />
+        </PlanetProvider>
+      </div>
   );
 }
 
