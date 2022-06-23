@@ -26,6 +26,7 @@ const PlanetContext = createContext<PlanetState | null>(null);
 
 export const PlanetProvider: FC<Props> = ({ children }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
+  const [selectedPlanets, setSelectedPlanets] = useState<Planet[]>([]);
 
   async function queryPlanets() {
     const fetchPlanets = await fetch('https://swapi.dev/api/planets')
