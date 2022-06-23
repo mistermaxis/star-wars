@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   createContext, FC, ReactNode, useContext, useState,
 } from 'react';
@@ -15,8 +14,6 @@ export interface Planet {
 export type PlanetState = {
   planets: Planet[];
   queryPlanets: () => void;
-  // eslint-disable-next-line no-unused-vars
-  toggleSelected: (name: string) => void;
 }
 
 interface Props {
