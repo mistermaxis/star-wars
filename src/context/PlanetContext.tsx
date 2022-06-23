@@ -16,6 +16,8 @@ export type PlanetState = {
   queryPlanets: () => void;
   // eslint-disable-next-line no-unused-vars
   addToList: (name: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  removeFromList: (name: string) => void;
 }
 
 interface Props {
@@ -51,8 +53,13 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
     setSelectedPlanets([...selectedPlanets, planets[newPlanetIndex]]);
   }
 
+  function removeFromList(name: string) {
+    const newPlanetList = selectedPlanets.filter((planet) => planet.name !== name);
+    setSelectedPlanets([...newPlanetList]);
+  }
+
   return (
-    <PlanetContext.Provider value={{ planets, queryPlanets, addToList }}>
+    <PlanetContext.Provider value={{ planets, queryPlanets, addToList, removeFromList }}>
       { children }
     </PlanetContext.Provider>
   );
