@@ -26,6 +26,7 @@ function PlanetSearch() {
       options={planets.map((planet) => planet.name)}
       renderInput={(params) => <TextField {...params} label='Planets' />}
       filterOptions={(x) => x}
+      onChange={(e, value) => handleValueChange(e, value)}
       />
     </div>
   );
