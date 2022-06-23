@@ -21,7 +21,7 @@ function PlanetSearch() {
   }
 
   return (
-    <div>
+    <Stack>
       <Autocomplete
       options={planets.map((planet) => planet.name)}
       renderInput={(params) => <TextField {...params} label='Planets' />}
@@ -30,7 +30,7 @@ function PlanetSearch() {
       onInputChange={(e, value) => handleInputChange(e, value)}
       getOptionDisabled={(option) => selectedPlanets.some((planet) => planet.name === option)}
       />
-    </div>
+    </Stack>
   );
 }
 
