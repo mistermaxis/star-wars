@@ -2,7 +2,7 @@ import { PlanetState, usePlanetContext } from '../context/PlanetContext';
 import PlanetItem from './PlanetItem';
 
 function PlanetList() {
-  const {  } = usePlanetContext() as PlanetState;
+  const { selectedPlanets } = usePlanetContext() as PlanetState;
 
   return (
     <div>{planets.filter((planet) => planet.selected === true)
