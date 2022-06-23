@@ -27,6 +27,7 @@ function PlanetSearch() {
       renderInput={(params) => <TextField {...params} label='Planets' />}
       filterOptions={(x) => x}
       onChange={(e, value) => handleValueChange(e, value)}
+      onInputChange={(e, value) => handleInputChange(e, value)}
       />
     </div>
   );
