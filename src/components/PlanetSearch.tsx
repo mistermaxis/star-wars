@@ -14,6 +14,10 @@ function PlanetSearch() {
     }
   }
 
+  function handleInputChange(e: React.SyntheticEvent<Element, Event>, value: string) {
+    queryPlanets(value);
+  }
+
   return (
     <div>
     </div>
