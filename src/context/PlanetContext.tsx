@@ -13,7 +13,8 @@ export interface Planet {
 export type PlanetState = {
   planets: Planet[];
   selectedPlanets: Planet[];
-  queryPlanets: () => void;
+  // eslint-disable-next-line no-unused-vars
+  queryPlanets: (query: string) => void;
   // eslint-disable-next-line no-unused-vars
   addToList: (name: string) => void;
   // eslint-disable-next-line no-unused-vars
@@ -30,11 +31,15 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [selectedPlanets, setSelectedPlanets] = useState<Planet[]>([]);
 
-  async function queryPlanets() {
-    const fetchPlanets = await fetch('https://swapi.dev/api/planets')
+  async function queryPlanets(query: string) {
+    if (query === '') { setPlanets([]); return; }
+
+    const fetchPlanets = await fetch(`https://swapi.dev/api/planets?search=${query}`)
       .then((response) => response.json())
       .then((result) => result.results);
+
     const planetsArray: Planet[] = [];
+
     fetchPlanets.forEach(((planet: Planet) => {
       const newPlanet: Planet = {
         name: planet.name,
@@ -45,6 +50,7 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
       };
       planetsArray.push(newPlanet);
     }));
+
     setPlanets(planetsArray);
   }
 
