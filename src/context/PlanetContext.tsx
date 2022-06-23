@@ -8,7 +8,6 @@ export interface Planet {
   climate: string,
   terrain: string,
   population: number,
-  selected: boolean,
 }
 
 export type PlanetState = {
@@ -37,7 +36,6 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
         climate: planet.climate,
         terrain: planet.terrain,
         population: planet.population,
-        selected: false,
       };
       planetsArray.push(newPlanet);
     }));
