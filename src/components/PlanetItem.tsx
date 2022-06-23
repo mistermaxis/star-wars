@@ -3,6 +3,7 @@ import {
   CardContent,
   CardHeader,
   Typography,
+  Button,
 } from '@mui/material';
 import { Planet, PlanetState, usePlanetContext } from '../context/PlanetContext';
 
@@ -24,7 +25,7 @@ function PlanetItem({ planet }: props) {
           <span> and its climate is { planet.climate }</span>
         </Typography>
       </CardContent>
-      <button onClick={() => removeFromList(planet.name)}>Deselect</button>
+      <Button onClick={() => removeFromList(planet.name)}>Deselect</Button>
     </Card>
   );
 }
