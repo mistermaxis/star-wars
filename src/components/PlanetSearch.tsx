@@ -28,6 +28,7 @@ function PlanetSearch() {
       filterOptions={(x) => x}
       onChange={(e, value) => handleValueChange(e, value)}
       onInputChange={(e, value) => handleInputChange(e, value)}
+      getOptionDisabled={(option) => selectedPlanets.some((planet) => planet.name === option)}
       />
     </div>
   );
