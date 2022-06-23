@@ -44,16 +44,6 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
     setPlanets(planetsArray);
   }
 
-  function toggleSelected(name: string) {
-    const tempPlanets = [...planets];
-    const planetIndex = planets.findIndex((p) => p.name === name);
-    tempPlanets[planetIndex] = {
-      ...tempPlanets[planetIndex],
-      selected: !tempPlanets[planetIndex].selected,
-    };
-    setPlanets(tempPlanets);
-  }
-
   return (
     <PlanetContext.Provider value={{ planets, queryPlanets, toggleSelected }}>
       { children }
