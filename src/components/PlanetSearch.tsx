@@ -25,6 +25,7 @@ function PlanetSearch() {
       <Autocomplete
       options={planets.map((planet) => planet.name)}
       renderInput={(params) => <TextField {...params} label='Planets' />}
+      filterOptions={(x) => x}
       />
     </div>
   );
