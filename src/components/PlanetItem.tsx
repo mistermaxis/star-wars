@@ -15,9 +15,9 @@ function PlanetItem({ planet }: props) {
   const { removeFromList } = usePlanetContext() as PlanetState;
 
   return (
-    <Card>
-      <CardContent>
-        <CardHeader title={ planet.name } />
+    <Card sx={{ display: 'flex', justifyContent: 'space-between', padding: '1rem' }}>
+      <CardContent sx={{ padding: 0, maxWidth: 'min(60%, 20rem)' }}>
+        <CardHeader sx={{ padding: 0 }} title={ planet.name } />
         <Typography>
           <span>{ planet.name } has a population of { planet.population }</span>
           <span> and a diameter of { planet.diameter }.</span>
@@ -25,7 +25,9 @@ function PlanetItem({ planet }: props) {
           <span> and its climate is { planet.climate }</span>
         </Typography>
       </CardContent>
-      <Button onClick={() => removeFromList(planet.name)}>Deselect</Button>
+      <Button
+    sx={{ backgroundColor: 'black', alignSelf: 'end' }}
+    variant='contained' onClick={() => removeFromList(planet.name)}>Delete</Button>
     </Card>
   );
 }
