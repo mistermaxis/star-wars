@@ -1,17 +1,14 @@
-/* eslint-disable no-console */
-import { useEffect } from 'react';
+import Stack from '@mui/material/Stack';
 import { PlanetState, usePlanetContext } from '../context/PlanetContext';
 import PlanetItem from './PlanetItem';
 
 function PlanetList() {
-  const { planets, queryPlanets } = usePlanetContext() as PlanetState;
-  useEffect(() => {
-    queryPlanets();
-  }, []);
+  const { selectedPlanets } = usePlanetContext() as PlanetState;
 
   return (
-    <div>{planets.filter((planet) => planet.selected === true)
-      .map((planet) => <PlanetItem key={ planet.name } planet={ planet } />)}</div>
+    <Stack spacing={2}>{
+      selectedPlanets.map((planet) => <PlanetItem key={ planet.name } planet={ planet } />)
+      }</Stack>
   );
 }
 

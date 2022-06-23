@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   createContext, FC, ReactNode, useContext, useState,
 } from 'react';
@@ -9,14 +8,17 @@ export interface Planet {
   climate: string,
   terrain: string,
   population: number,
-  selected: boolean,
 }
 
 export type PlanetState = {
   planets: Planet[];
-  queryPlanets: () => void;
+  selectedPlanets: Planet[];
   // eslint-disable-next-line no-unused-vars
-  toggleSelected: (name: string) => void;
+  queryPlanets: (query: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  addToList: (name: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  removeFromList: (name: string) => void;
 }
 
 interface Props {
@@ -27,12 +29,17 @@ const PlanetContext = createContext<PlanetState | null>(null);
 
 export const PlanetProvider: FC<Props> = ({ children }) => {
   const [planets, setPlanets] = useState<Planet[]>([]);
+  const [selectedPlanets, setSelectedPlanets] = useState<Planet[]>([]);
 
-  async function queryPlanets() {
-    const fetchPlanets = await fetch('https://swapi.dev/api/planets')
+  async function queryPlanets(query: string) {
+    if (query === '') { setPlanets([]); return; }
+
+    const fetchPlanets = await fetch(`https://swapi.dev/api/planets?search=${query}`)
       .then((response) => response.json())
       .then((result) => result.results);
+
     const planetsArray: Planet[] = [];
+
     fetchPlanets.forEach(((planet: Planet) => {
       const newPlanet: Planet = {
         name: planet.name,
@@ -40,25 +47,31 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
         climate: planet.climate,
         terrain: planet.terrain,
         population: planet.population,
-        selected: false,
       };
       planetsArray.push(newPlanet);
     }));
+
     setPlanets(planetsArray);
   }
 
-  function toggleSelected(name: string) {
-    const tempPlanets = [...planets];
-    const planetIndex = planets.findIndex((p) => p.name === name);
-    tempPlanets[planetIndex] = {
-      ...tempPlanets[planetIndex],
-      selected: !tempPlanets[planetIndex].selected,
-    };
-    setPlanets(tempPlanets);
+  function addToList(name: string) {
+    const newPlanetIndex: number = planets.findIndex((planet) => planet.name === name);
+    setSelectedPlanets([...selectedPlanets, planets[newPlanetIndex]]);
+  }
+
+  function removeFromList(name: string) {
+    const newPlanetList = selectedPlanets.filter((planet) => planet.name !== name);
+    setSelectedPlanets([...newPlanetList]);
   }
 
   return (
-    <PlanetContext.Provider value={{ planets, queryPlanets, toggleSelected }}>
+    <PlanetContext.Provider value={{
+      planets,
+      selectedPlanets,
+      queryPlanets,
+      addToList,
+      removeFromList,
+    }}>
       { children }
     </PlanetContext.Provider>
   );

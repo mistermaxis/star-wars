@@ -1,15 +1,17 @@
+import { Stack } from '@mui/material';
 import PlanetList from './components/PlanetList';
+import PlanetSearch from './components/PlanetSearch';
 import { PlanetProvider } from './context/PlanetContext';
 import './public/assets/style/App.css';
 
 function App() {
   return (
-      <div>
-        <h1>Planets</h1>
+      <Stack spacing={2} width='40rem'>
         <PlanetProvider>
+          <PlanetSearch />
           <PlanetList />
         </PlanetProvider>
-      </div>
+      </Stack>
   );
 }
 
