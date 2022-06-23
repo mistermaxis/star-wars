@@ -59,7 +59,13 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
   }
 
   return (
-    <PlanetContext.Provider value={{ planets, queryPlanets, addToList, removeFromList }}>
+    <PlanetContext.Provider value={{
+      planets,
+      selectedPlanets,
+      queryPlanets,
+      addToList,
+      removeFromList,
+    }}>
       { children }
     </PlanetContext.Provider>
   );
