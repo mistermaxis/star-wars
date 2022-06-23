@@ -8,6 +8,12 @@ function PlanetSearch() {
     addToList,
   } = usePlanetContext() as PlanetState;
 
+  function handleValueChange(e: React.SyntheticEvent<Element, Event>, value: string | null) {
+    if (value) {
+      addToList(value);
+    }
+  }
+
   return (
     <div>
     </div>
