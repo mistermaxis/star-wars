@@ -14,6 +14,8 @@ export type PlanetState = {
   planets: Planet[];
   selectedPlanets: Planet[];
   queryPlanets: () => void;
+  // eslint-disable-next-line no-unused-vars
+  addToList: (name: string) => void;
 }
 
 interface Props {
@@ -43,8 +45,13 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
     setPlanets(planetsArray);
   }
 
+  function addToList(name: string) {
+    const newPlanetIndex: number = planets.findIndex((planet) => planet.name === name);
+    setSelectedPlanets([...selectedPlanets, planets[newPlanetIndex]]);
+  }
+
   return (
-    <PlanetContext.Provider value={{ planets, queryPlanets }}>
+    <PlanetContext.Provider value={{ planets, queryPlanets, addToList }}>
       { children }
     </PlanetContext.Provider>
   );
