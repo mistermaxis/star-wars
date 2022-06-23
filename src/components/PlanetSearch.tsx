@@ -1,3 +1,4 @@
+import React from 'react';
 import { PlanetState, usePlanetContext } from '../context/PlanetContext';
 
 function PlanetSearch() {
