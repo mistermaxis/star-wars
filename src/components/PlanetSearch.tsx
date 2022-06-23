@@ -1,4 +1,5 @@
 import React from 'react';
+import { Autocomplete, Stack, TextField } from '@mui/material';
 import { PlanetState, usePlanetContext } from '../context/PlanetContext';
 
 function PlanetSearch() {
