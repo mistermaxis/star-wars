@@ -45,7 +45,7 @@ export const PlanetProvider: FC<Props> = ({ children }) => {
   }
 
   return (
-    <PlanetContext.Provider value={{ planets, queryPlanets, toggleSelected }}>
+    <PlanetContext.Provider value={{ planets, queryPlanets }}>
       { children }
     </PlanetContext.Provider>
   );
