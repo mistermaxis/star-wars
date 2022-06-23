@@ -1,4 +1,9 @@
-import { CardContent, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+} from '@mui/material';
 import { Planet, PlanetState, usePlanetContext } from '../context/PlanetContext';
 
 interface props {
@@ -9,9 +14,9 @@ function PlanetItem({ planet }: props) {
   const { removeFromList } = usePlanetContext() as PlanetState;
 
   return (
-    <div>
-      <p>Name: { planet.name }</p>
+    <Card>
       <CardContent>
+        <CardHeader title={ planet.name } />
         <Typography>
           <span>{ planet.name } has a population of { planet.population }</span>
           <span> and a diameter of { planet.diameter }.</span>
@@ -20,7 +25,7 @@ function PlanetItem({ planet }: props) {
         </Typography>
       </CardContent>
       <button onClick={() => removeFromList(planet.name)}>Deselect</button>
-    </div>
+    </Card>
   );
 }
 
