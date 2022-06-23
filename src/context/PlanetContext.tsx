@@ -12,6 +12,7 @@ export interface Planet {
 
 export type PlanetState = {
   planets: Planet[];
+  selectedPlanets: Planet[];
   queryPlanets: () => void;
 }
 
