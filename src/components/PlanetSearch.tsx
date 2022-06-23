@@ -22,6 +22,10 @@ function PlanetSearch() {
 
   return (
     <div>
+      <Autocomplete
+      options={planets.map((planet) => planet.name)}
+      renderInput={(params) => <TextField {...params} label='Planets' />}
+      />
     </div>
   );
 }
