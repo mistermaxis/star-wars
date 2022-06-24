@@ -27,10 +27,12 @@ Run the following commands to run the app
 
 In your browser, go to
 
-- `http://localhost:3001`
+- `http://localhost:3000`
 
 ## Testing
-- TODO
+- To run tests, from a terminal in your working directory, type `npx cypress open`
+- The cypress application will start. It will prompt you to select a test type (select e2e) and a browser
+- After that, you can choose the spec file from the list and run it
 
 ## Author
 
