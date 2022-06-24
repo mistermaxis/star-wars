@@ -13,3 +13,5 @@ jobs:
         with:
           build: npm run build
           start: npm run dev
+          browser: chrome
+          headed: true
