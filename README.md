@@ -2,6 +2,8 @@
 
 > An application built with React.js which lets you search for planets in the Star Wars universe.
 
+## [Live Demo](https://mistermaxis.github.io/star-wars/)
+
 ## Built With
 
 - Node.js
