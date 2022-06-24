@@ -16,10 +16,6 @@ describe('Main Page', () => {
   });
 
   it('adds selection to the list', () => {
-    cy.get('.MuiOutlinedInput-root')
-      .find('input')
-      .focus()
-      .type('Tat');
     cy.contains('Tatooine').click();
     cy.get('.MuiCardHeader-title').contains('Tatooine');
   });
